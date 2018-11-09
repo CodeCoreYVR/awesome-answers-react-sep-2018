@@ -17,7 +17,14 @@ import React from "react";
 // or a React element or an array of React elements.
 const QuestionDetails = props => (
   <div className="QuestionDetails">
-    <h2>{props.title}</h2>
+    <h2
+      style={{
+        color: "maroon",
+        fontWeight: "300"
+      }}
+    >
+      {props.title}
+    </h2>
     <p>{props.body}</p>
     <p>
       <small>Seen {props.view_count} time(s)</small>•

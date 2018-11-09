@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// To use CSS in create-react-app project, you must import the
+// the file as shown below.
 import "./index.css";
+// The CSS will be added to our index.html's HEAD tag by Webpack
+// using JavaScript. Only CSS files that have been imported
+// will added to the HTML.
 import * as serviceWorker from "./serviceWorker";
 import QuestionShowPage from "./components/QuestionShowPage";
 

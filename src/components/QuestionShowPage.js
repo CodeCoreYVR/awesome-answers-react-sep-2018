@@ -14,7 +14,14 @@ const QuestionShowPage = () => (
       created_at={new Date().toLocaleDateString()}
       updated_at={new Date().toLocaleDateString()}
     />
-    <h2>Answers</h2>
+    <h2
+      style={{
+        fontWeight: "300",
+        color: "darkgreen"
+      }}
+    >
+      Answers
+    </h2>
     <AnswerDetails
       body="Blue."
       name="Bob Lewyn"
