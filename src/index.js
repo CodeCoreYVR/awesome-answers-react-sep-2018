@@ -30,7 +30,15 @@ const AnswerDetails = () => (
   </div>
 );
 
-ReactDOM.render(<AnswerDetails />, document.getElementById("root"));
+const QuestionShowPage = () => (
+  <main className="QuestionShowPage">
+    <QuestionDetails />
+    <h2>Answers</h2>
+    <AnswerDetails />
+  </main>
+);
+
+ReactDOM.render(<QuestionShowPage />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
