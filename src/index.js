@@ -22,7 +22,15 @@ const QuestionDetails = () => (
   </div>
 );
 
-ReactDOM.render(<QuestionDetails />, document.getElementById("root"));
+const AnswerDetails = () => (
+  <div className="AnswerDetails">
+    <p>Red... No, wait! Blue</p>
+    <p>By Ulises Wisozk</p>
+    <p>Created at: 2018-01-01</p>
+  </div>
+);
+
+ReactDOM.render(<AnswerDetails />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
