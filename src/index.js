@@ -38,11 +38,11 @@ const QuestionDetails = props => (
   </div>
 );
 
-const AnswerDetails = () => (
+const AnswerDetails = props => (
   <div className="AnswerDetails">
-    <p>Red... No, wait! Blue</p>
-    <p>By Ulises Wisozk</p>
-    <p>Created at: 2018-01-01</p>
+    <p>{props.body}</p>
+    <p>By {props.name}</p>
+    <p>Created at: {props.created_at}</p>
   </div>
 );
 
@@ -59,7 +59,11 @@ const QuestionShowPage = () => (
       updated_at={new Date().toLocaleDateString()}
     />
     <h2>Answers</h2>
-    <AnswerDetails />
+    <AnswerDetails
+      body="Blue."
+      name="Bob Lewyn"
+      created_at={new Date().toLocaleDateString()}
+    />
   </main>
 );
 
