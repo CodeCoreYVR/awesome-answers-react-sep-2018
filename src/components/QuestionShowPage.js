@@ -1,6 +1,8 @@
 import React from "react";
 import QuestionDetails from "./QuestionDetails";
 import AnswerDetails from "./AnswerDetails";
+import AnswerList from "./AnswerList";
+import aSingleQuestion from "./aSingleQuestion";
 
 // When passing props to a JSX rendered component,
 // write them as HTML attributes where its values must
@@ -22,11 +24,7 @@ const QuestionShowPage = () => (
     >
       Answers
     </h2>
-    <AnswerDetails
-      body="Blue."
-      name="Bob Lewyn"
-      created_at={new Date().toLocaleDateString()}
-    />
+    <AnswerList answers={aSingleQuestion.answers} />
   </main>
 );
 
