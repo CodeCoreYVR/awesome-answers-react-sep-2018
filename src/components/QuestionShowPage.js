@@ -18,16 +18,24 @@ import aSingleQuestion from "./aSingleQuestion";
 // write them as HTML attributes where its values must
 // be surrounded by {...} if their type is something other than a string.
 class QuestionShowPage extends Component {
+  // When writing your own constructor for React components,
+  // you must take `props` as an argument.
+  constructor(props) {
+    // You must also call the constructor of its super class, Component, with
+    // `super`.
+    super(props);
+
+    this.state = {
+      question: {
+        ...aSingleQuestion
+      }
+    };
+  }
+
   render() {
     return (
       <main className="QuestionShowPage">
-        <QuestionDetails
-          title="What is your favourite colour?"
-          body="Red, green, blue, magenta, yellow, etc."
-          view_count={101}
-          created_at={new Date().toLocaleDateString()}
-          updated_at={new Date().toLocaleDateString()}
-        />
+        <QuestionDetails {...this.state.question} />
         <h2
           style={{
             fontWeight: "300",
@@ -36,7 +44,7 @@ class QuestionShowPage extends Component {
         >
           Answers
         </h2>
-        <AnswerList answers={aSingleQuestion.answers} />
+        <AnswerList answers={this.state.question.answers} />
       </main>
     );
   }
