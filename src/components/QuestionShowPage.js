@@ -30,12 +30,44 @@ class QuestionShowPage extends Component {
         ...aSingleQuestion
       }
     };
+
+    this.deleteQuestion = this.deleteQuestion.bind(this);
+    this.deleteAnswer = this.deleteAnswer.bind(this);
+  }
+
+  deleteQuestion() {
+    this.setState({
+      question: null
+    });
+  }
+
+  deleteAnswer(answerId) {
+    const {
+      question,
+      question: { answers }
+    } = this.state;
+
+    this.setState({
+      question: {
+        ...question,
+        answers: answers.filter(a => a.id !== answerId)
+      }
+    });
   }
 
   render() {
+    if (!this.state.question) {
+      return (
+        <main className="QuestionShowPage">
+          <h1>Question doesn't exist!</h1>
+        </main>
+      );
+    }
+
     return (
       <main className="QuestionShowPage">
         <QuestionDetails {...this.state.question} />
+        <button onClick={this.deleteQuestion}>Delete</button>
         <h2
           style={{
             fontWeight: "300",
@@ -44,7 +76,10 @@ class QuestionShowPage extends Component {
         >
           Answers
         </h2>
-        <AnswerList answers={this.state.question.answers} />
+        <AnswerList
+          onAnswerDeleteClick={this.deleteAnswer}
+          answers={this.state.question.answers}
+        />
       </main>
     );
   }

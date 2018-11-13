@@ -17,7 +17,10 @@ const AnswerList = props => (
           (i.e. id, author, body, created_at and updated_at)
           and we pass them as props of AnswerDetails.
         */}
-        <AnswerDetails {...answer} />
+        <AnswerDetails
+          onDeleteClick={id => props.onAnswerDeleteClick(id)}
+          {...answer}
+        />
       </li>
     ))}
   </ul>
