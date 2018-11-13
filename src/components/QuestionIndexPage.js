@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import bunchOfQuestions from "./bunchOfQuestions";
 
 class QuestionIndexPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      questions: [...bunchOfQuestions]
+    };
+  }
+
   render() {
     return (
       <main className="QuestionIndexPage">
@@ -12,7 +20,7 @@ class QuestionIndexPage extends Component {
             paddingLeft: "0"
           }}
         >
-          {bunchOfQuestions.map(question => (
+          {this.state.questions.map(question => (
             <li
               key={question.id}
               style={{
