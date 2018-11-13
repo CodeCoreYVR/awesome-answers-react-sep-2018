@@ -8,6 +8,27 @@ class QuestionIndexPage extends Component {
     this.state = {
       questions: [...bunchOfQuestions]
     };
+
+    // Use the `bind` method on functions to permanently set their
+    // `this` to the first argument of the `bind` method.
+    this.deleteQuestion = this.deleteQuestion.bind(this);
+    // We often do this in React for methods that we pass as callbacks
+    // to props or higher-order functions.
+  }
+
+  deleteQuestion(questionId) {
+    console.log("Delete button clicked!");
+
+    // To do ALL state changes in class-based component you
+    // must the `setState` method.
+    // - It takes an object as a first argument where its property-value
+    //   pairs get merged with the current state at an optimal of
+    //   react's choosing.
+    // - Using `setState` is asynchronous operation.
+
+    this.setState({
+      questions: this.state.questions.filter(q => q.id !== questionId)
+    });
   }
 
   render() {
@@ -27,11 +48,14 @@ class QuestionIndexPage extends Component {
                 marginBottom: "10px"
               }}
             >
-              <a href="#">{question.title}</a>
-              <br />
               <small>
                 <em>{question.id}</em>
-              </small>
+              </small>{" "}
+              <a href="#">{question.title}</a>
+              <br />
+              <button onClick={() => this.deleteQuestion(question.id)}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>
