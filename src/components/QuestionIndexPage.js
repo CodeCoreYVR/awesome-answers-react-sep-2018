@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import QuestionForm from "./QuestionForm";
-
-import bunchOfQuestions from "./bunchOfQuestions";
-
-window.questions = bunchOfQuestions;
+import { Question } from "../requests";
 
 class QuestionIndexPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      questions: [...bunchOfQuestions]
+      loading: true,
+      questions: []
     };
 
     // Use the `bind` method on functions to permanently set their
@@ -19,6 +17,15 @@ class QuestionIndexPage extends Component {
     // We often do this in React for methods that we pass as callbacks
     // to props or higher-order functions.
     this.createQuestion = this.createQuestion.bind(this);
+  }
+
+  componentDidMount() {
+    Question.all().then(questions => {
+      this.setState({
+        questions: questions,
+        loading: false
+      });
+    });
   }
 
   deleteQuestion(questionId) {
@@ -48,6 +55,15 @@ class QuestionIndexPage extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (
+        <main className="QuestionIndexPage">
+          <h1>Question Index</h1>
+          <h2>Loading...</h2>
+        </main>
+      );
+    }
+
     return (
       <main className="QuestionIndexPage">
         <h1>Question Index</h1>

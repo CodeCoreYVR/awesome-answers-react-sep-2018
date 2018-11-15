@@ -6,8 +6,8 @@ import CurrentDateTime from "./CurrentDateTime";
 const App = () => (
   <div className="App">
     <CurrentDateTime />
-    <QuestionShowPage />
     <QuestionIndexPage />
+    <QuestionShowPage />
   </div>
 );
 
