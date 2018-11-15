@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import QuestionForm from "./QuestionForm";
 import { Question } from "../requests";
 
 class QuestionIndexPage extends Component {
@@ -18,7 +17,6 @@ class QuestionIndexPage extends Component {
     this.deleteQuestion = this.deleteQuestion.bind(this);
     // We often do this in React for methods that we pass as callbacks
     // to props or higher-order functions.
-    this.createQuestion = this.createQuestion.bind(this);
   }
 
   componentDidMount() {
@@ -45,17 +43,6 @@ class QuestionIndexPage extends Component {
     });
   }
 
-  createQuestion(params) {
-    this.setState({
-      questions: [
-        {
-          id: Math.max(...this.state.questions.map(q => q.id)) + 1,
-          ...params
-        }
-      ].concat(this.state.questions)
-    });
-  }
-
   render() {
     if (this.state.loading) {
       return (
@@ -69,7 +56,6 @@ class QuestionIndexPage extends Component {
     return (
       <main className="QuestionIndexPage">
         <h1>Question Index</h1>
-        <QuestionForm onSubmit={this.createQuestion} />
         <ul
           style={{
             listStyle: "none",

@@ -10,6 +10,9 @@ const NavBar = props => {
       <NavLink exact to="/questions">
         Questions
       </NavLink>
+      <NavLink exact to="/questions/new">
+        New Question
+      </NavLink>
     </nav>
   );
 };
