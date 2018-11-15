@@ -13,7 +13,7 @@ const App = () => (
     <div className="App">
       <NavBar />
       <Route path="/" exact component={WelcomePage} />
-      <Route path="/questions/id" exact={true} component={QuestionShowPage} />
+      <Route path="/questions/:id" exact={true} component={QuestionShowPage} />
       <Route path="/questions" exact component={QuestionIndexPage} />
     </div>
   </BrowserRouter>

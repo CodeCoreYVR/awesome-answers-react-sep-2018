@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import QuestionForm from "./QuestionForm";
 import { Question } from "../requests";
 
@@ -84,7 +86,7 @@ class QuestionIndexPage extends Component {
               <small>
                 <em>{question.id}</em>
               </small>{" "}
-              <a href="#">{question.title}</a>
+              <Link to={`/questions/${question.id}`}>{question.title}</Link>
               <br />
               <button onClick={() => this.deleteQuestion(question.id)}>
                 Delete

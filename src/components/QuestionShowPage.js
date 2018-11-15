@@ -35,7 +35,12 @@ class QuestionShowPage extends Component {
   }
 
   componentDidMount() {
-    Question.one(410).then(question => {
+    // Components rendered by the <Route> component are passed
+    // three props: history, location and match.
+
+    // `match` holds property thats your URL's params.
+    const id = this.props.match.params.id;
+    Question.one(id).then(question => {
       this.setState({
         question: question,
         loading: false
