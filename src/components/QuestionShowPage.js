@@ -12,7 +12,7 @@ import React, { Component } from "react";
 // export { Component }
 import QuestionDetails from "./QuestionDetails";
 import AnswerList from "./AnswerList";
-import aSingleQuestion from "./aSingleQuestion";
+import { Question } from "../requests";
 
 // When passing props to a JSX rendered component,
 // write them as HTML attributes where its values must
@@ -26,13 +26,21 @@ class QuestionShowPage extends Component {
     super(props);
 
     this.state = {
-      question: {
-        ...aSingleQuestion
-      }
+      loading: true,
+      question: null
     };
 
     this.deleteQuestion = this.deleteQuestion.bind(this);
     this.deleteAnswer = this.deleteAnswer.bind(this);
+  }
+
+  componentDidMount() {
+    Question.one(410).then(question => {
+      this.setState({
+        question: question,
+        loading: false
+      });
+    });
   }
 
   deleteQuestion() {
@@ -56,6 +64,14 @@ class QuestionShowPage extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (
+        <main className="QuestionShowPage">
+          <h2>Loading...</h2>
+        </main>
+      );
+    }
+
     if (!this.state.question) {
       return (
         <main className="QuestionShowPage">
