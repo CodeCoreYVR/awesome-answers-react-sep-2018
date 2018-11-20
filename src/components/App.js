@@ -8,7 +8,7 @@ import QuestionShowPage from "./QuestionShowPage";
 import WelcomePage from "./WelcomePage";
 import SignInPage from "./SignInPage";
 
-import { User } from "../requests";
+import { User, Session } from "../requests";
 
 // When react-router-dom, you must wrap your root component
 // inside of of the <BrowserRouter> component.
@@ -21,6 +21,11 @@ class App extends Component {
     };
 
     this.getUser = this.getUser.bind(this);
+    this.destroySession = this.destroySession.bind(this);
+  }
+
+  destroySession() {
+    Session.destroy().then(() => this.setState({ currentUser: null }));
   }
 
   getUser() {
@@ -48,7 +53,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <NavBar currentUser={currentUser} />
+          <NavBar currentUser={currentUser} onSignOut={this.destroySession} />
           <Switch>
             <Route path="/" exact component={WelcomePage} />
             <Route

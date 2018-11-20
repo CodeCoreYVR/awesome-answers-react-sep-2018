@@ -37,6 +37,12 @@ export const Session = {
       },
       body: JSON.stringify(params)
     }).then(res => res.json());
+  },
+  destroy() {
+    return fetch(`${BASE_URL}/sessions/`, {
+      method: "DELETE",
+      credentials: "include"
+    }).then(res => res.json());
   }
 };
 
