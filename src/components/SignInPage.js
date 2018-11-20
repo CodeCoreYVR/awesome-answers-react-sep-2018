@@ -47,6 +47,9 @@ export default class SignInPage extends Component {
         return;
       }
 
+      if (typeof this.props.onSignIn === "function") {
+        this.props.onSignIn();
+      }
       // The `history` prop is passed to components rendered by
       // the <Route> component. This `history` allows us to manipulate
       // the history browser including redirecting the user to another

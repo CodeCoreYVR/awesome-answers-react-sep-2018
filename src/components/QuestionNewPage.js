@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import QuestionForm from "./QuestionForm";
-import { Question, Session } from "../requests";
+import { Question } from "../requests";
 
 class QuestionNewPage extends Component {
   constructor(props) {
@@ -9,16 +9,11 @@ class QuestionNewPage extends Component {
   }
 
   createQuestion(params) {
-    Session.create({
-      email: "js@winterfell.gov",
-      password: "supersecret"
-    })
-      .then(() => Question.create(params))
-      .then(question => {
-        if (!question.errors) {
-          this.props.history.push(`/questions/${question.id}`);
-        }
-      });
+    Question.create(params).then(question => {
+      if (!question.errors) {
+        this.props.history.push(`/questions/${question.id}`);
+      }
+    });
   }
 
   render() {
