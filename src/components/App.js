@@ -17,6 +17,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      loading: true,
       currentUser: null
     };
 
@@ -38,7 +39,7 @@ class App extends Component {
 
         // this.setState({ currentUser: currentUser });
         // 👇 syntax sugar for 👆
-        this.setState({ currentUser });
+        this.setState({ currentUser, loading: false });
       }
     });
   }
@@ -49,6 +50,16 @@ class App extends Component {
 
   render() {
     const { currentUser } = this.state;
+
+    if (this.state.loading) {
+      return (
+        <div className="App">
+          <main>
+            <h1>Loading...</h1>
+          </main>
+        </div>
+      );
+    }
 
     return (
       <BrowserRouter>
