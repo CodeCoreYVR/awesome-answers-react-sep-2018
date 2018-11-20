@@ -7,6 +7,7 @@ import QuestionNewPage from "./QuestionNewPage";
 import QuestionShowPage from "./QuestionShowPage";
 import WelcomePage from "./WelcomePage";
 import SignInPage from "./SignInPage";
+import AuthRoute from "./AuthRoute";
 
 import { User, Session } from "../requests";
 
@@ -39,8 +40,10 @@ class App extends Component {
 
         // this.setState({ currentUser: currentUser });
         // 👇 syntax sugar for 👆
-        this.setState({ currentUser, loading: false });
+        this.setState({ currentUser });
       }
+
+      this.setState({ loading: false });
     });
   }
 
@@ -74,7 +77,12 @@ class App extends Component {
                 <SignInPage {...routeProps} onSignIn={this.getUser} />
               )}
             />
-            <Route path="/questions/new" exact component={QuestionNewPage} />
+            <AuthRoute
+              isAuth={currentUser}
+              path="/questions/new"
+              exact
+              component={QuestionNewPage}
+            />
             <Route
               path="/questions/:id"
               exact={true}
