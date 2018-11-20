@@ -13,6 +13,9 @@ const NavBar = props => {
       <NavLink exact to="/questions/new">
         New Question
       </NavLink>
+      <NavLink exact to="/session/new">
+        Sign In
+      </NavLink>
     </nav>
   );
 };
