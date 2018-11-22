@@ -8,6 +8,7 @@ import QuestionShowPage from "./QuestionShowPage";
 import WelcomePage from "./WelcomePage";
 import SignInPage from "./SignInPage";
 import AuthRoute from "./AuthRoute";
+import NotFoundPage from "./NotFoundPage";
 
 import { User, Session } from "../requests";
 
@@ -89,6 +90,11 @@ class App extends Component {
               component={QuestionShowPage}
             />
             <Route path="/questions" exact component={QuestionIndexPage} />
+            {/*
+              A <Route> element without a "path" prop will render
+              for all routes. This is primarily inside of a <Switch>.
+            */}
+            <Route component={NotFoundPage} />
           </Switch>
         </div>
       </BrowserRouter>
