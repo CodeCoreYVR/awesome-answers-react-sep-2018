@@ -1,4 +1,5 @@
 import React from "react";
+import FormErrors from "./FormErrors/FormErrors";
 
 const QuestionForm = props => {
   const handleSubmit = event => {
@@ -12,7 +13,7 @@ const QuestionForm = props => {
       body: formData.get("body")
     });
 
-    currentTarget.reset();
+    // currentTarget.reset();
   };
 
   return (
@@ -20,10 +21,12 @@ const QuestionForm = props => {
       <div>
         <label htmlFor="title">Title</label> <br />
         <input name="title" id="title" />
+        <FormErrors forField="title" errors={props.errors} />
       </div>
       <div>
         <label htmlFor="body">Body</label> <br />
         <textarea name="body" id="body" cols="60" rows="4" />
+        <FormErrors forField="body" errors={props.errors} />
       </div>
       <div>
         <input type="submit" value="Submit" />
